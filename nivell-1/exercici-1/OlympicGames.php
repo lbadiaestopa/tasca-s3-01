@@ -1,56 +1,64 @@
 <?php
-class OlympicGames {
-    private $athletes = [];
-    private $events = [];
-    private $results = [];
 
-    public function processOlympicData($athletesData, $eventsData, $resultsData) {
+require_once __DIR__ . '/Athlete.php';
+require_once __DIR__ . '/Event.php';
+require_once __DIR__ . '/Result.php';
+class OlympicGames
+{
+    private int $year;
+    private array $athletesData = [];
+    private array $eventsData = [];
+    private array $resultsData = [];
 
-        foreach ($athletesData as $athlete) {
-            $this->athletes[] = ['name' => $athlete['name'], 'country' => $athlete['country']];
+    public function __construct(int $year, array $athletesData, array $eventsData, array $resultsData)
+    {
+        $this->year = $year;
+        $this->athletesData = $this->addAthletes($athletesData);
+        $this->eventsData = $this->addEvents($eventsData);
+        $this->resultsData = $this->addResults($resultsData);
+    }
+
+    public function addAthletes(array $athletesData): array
+    {
+        foreach ($athletesData as $athleteData) {
+            $athletes[] = new Athlete($athleteData['name'], $athleteData['country']);
         }
+        return $athletes;
+    }
 
-        foreach ($eventsData as $event) {
-            $this->events[] = ['event' => $event['event'], 'date' => $event['date']];
+    public function addEvents(array $eventsData): array
+    {
+        foreach ($eventsData as $eventData) {
+            $events[] = new Event($eventData['event'], $eventData['date']);
         }
+        return $events;
+    }
 
-        foreach ($resultsData as $result) {
-            $this->results[] = [
-                'athlete' => $result['athlete'],
-                'event' => $result['event'],
-                'medal' => $result['medal']
-            ];
+    public function addResults(array $resultsData): array
+    {
+        foreach ($resultsData as $resultData) {
+            $results[] = new Result($resultData['athlete'], $resultData['event'], $resultData['medal']);
         }
+        return $results;
+    }
 
-        echo "Olympic Games Results:\n";
-        foreach ($this->events as $event) {
-            echo "Event: " . $event['event'] . " on " . $event['date'] . "\n";
-            foreach ($this->results as $result) {
-                if ($result['event'] === $event['event']) {
-                    echo "- " . $result['athlete'] . " from " . $result['country'] . " won " . $result['medal'] . "\n";
-                }
-            }
-        }
+    public function getYear(): int
+    {
+        return $this->year;
+    }
+
+    public function getAthletesData(): array
+    {
+        return $this->athletesData;
+    }
+
+    public function getEventsData(): array
+    {
+        return $this->eventsData;
+    }
+
+    public function getResultsData(): array
+    {
+        return $this->resultsData;
     }
 }
-
-$olympics = new OlympicGames();
-
-$athletesData = [
-    ['name' => 'Usain Bolt', 'country' => 'Jamaica'],
-    ['name' => 'Michael Phelps', 'country' => 'USA']
-];
-
-$eventsData = [
-    ['event' => '100m Sprint', 'date' => '2024-08-01'],
-    ['event' => 'Swimming', 'date' => '2024-08-02']
-];
-
-$resultsData = [
-    ['athlete' => 'Usain Bolt', 'event' => '100m Sprint', 'medal' => 'Gold'],
-    ['athlete' => 'Michael Phelps', 'event' => 'Swimming', 'medal' => 'Gold']
-];
-
-$olympics->processOlympicData($athletesData, $eventsData, $resultsData);
-
-?>
