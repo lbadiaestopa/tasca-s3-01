@@ -1,8 +1,10 @@
 <?php 
 
-class BankTransfer
+require_once __DIR__ . '/PaymentGateway.php';
+
+class BankTransfer implements PaymentGateway
 {
-    public function sendTransfer(float $amount): string
+    public function sendPayment(float $amount): string
     {
         return "{$amount} bank transfer done";
     }
