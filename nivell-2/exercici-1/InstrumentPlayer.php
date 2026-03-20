@@ -2,21 +2,15 @@
 
 class InstrumentPlayer
 {
-    public function play(string $instrument): void
+    private Instrument $instrument;
+
+    public function __construct(Instrument $instrument = new UnknownInstrumentPlayer())
     {
-        if ($instrument === 'guitar') {
-            echo "🎸 Strumming the guitar\n";
-        } elseif ($instrument === 'drums') {
-            echo "🥁 Beating the drums\n";
-        } elseif ($instrument === 'piano') {
-            echo "🎹 Playing the piano\n";
-        } else {
-            echo "🔇 Unknown instrument\n";
-        }
+        $this->instrument = $instrument;
+    }
+
+    public function play(): void {
+        $this->instrument->play();
     }
 }
 
-$player = new InstrumentPlayer();
-$player->play('guitar');
-$player->play('drums');
-$player->play('piano');
