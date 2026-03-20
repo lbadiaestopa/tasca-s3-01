@@ -2,15 +2,15 @@
 
 class PaymentProcessor
 {
-    protected $gateway;
+    private PaymentGateway $gateway;
 
-    public function __construct()
+    public function __construct(PaymentGateway $gateway)
     {
-        $this->gateway = new StripePaymentGateway();
+        $this->gateway = $gateway;
     }
 
-    public function procesarPago(float $cantidad): string
+    public function processPayment(float $amount): string
     {
-        return $this->gateway->sendPayment($cantidad);
+        return $this->gateway->sendPayment($amount);
     }
 }
