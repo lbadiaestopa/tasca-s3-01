@@ -6,9 +6,4 @@ class Character
     {
         echo "The character moves forward.\n";
     }
-
-    public function attack(): void
-    {
-        echo "The character attacks with a sword.\n";
-    }
 }
