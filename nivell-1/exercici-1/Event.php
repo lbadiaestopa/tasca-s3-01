@@ -21,4 +21,9 @@ class Event
     {
         return $this->date;
     }
+
+    public function __toString(): string
+    {
+        return "Event: $this->name on $this->date";
+    }
 }
