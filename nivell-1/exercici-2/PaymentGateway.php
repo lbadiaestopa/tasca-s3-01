@@ -1,5 +1,5 @@
 <?php
 
 interface PaymentGateway {
-    function sendPayment(float $amount): string;
+    public function sendPayment(float $amount): string;
 }
