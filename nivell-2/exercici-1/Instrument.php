@@ -2,5 +2,5 @@
 
 interface Instrument
 {
-    function play(): void;
+    public function play(): void;
 }
