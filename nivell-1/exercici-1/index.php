@@ -23,4 +23,4 @@ $resultsData = [
 
 $olympics = new OlympicGames(2012, $athletesData, $eventsData, $resultsData);
 $olympicGamesPrinter = new OlympicGamesPrinter($olympics);
-$printOlympicGames = $olympicGamesPrinter->printOlympicsData(2012);
+$printOlympicGames = $olympicGamesPrinter->printOlympicsData();
