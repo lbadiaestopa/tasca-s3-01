@@ -3,6 +3,7 @@
 require_once __DIR__ . '/Athlete.php';
 require_once __DIR__ . '/Event.php';
 require_once __DIR__ . '/Result.php';
+
 class OlympicGames
 {
     private int $year;
@@ -60,5 +61,10 @@ class OlympicGames
     public function getResultsData(): array
     {
         return $this->resultsData;
+    }
+
+    public function __toString(): string
+    {
+        return "Olympic Games $this->year \n";
     }
 }
