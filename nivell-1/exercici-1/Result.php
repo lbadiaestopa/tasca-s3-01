@@ -28,4 +28,9 @@ class Result
     {
         return $this->medal;
     }
+
+    public function __toString(): string
+    {
+        return $this->medal;
+    }
 }

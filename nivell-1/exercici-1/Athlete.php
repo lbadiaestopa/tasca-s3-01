@@ -21,4 +21,9 @@ class Athlete
     {
         return $this->country;
     }
+
+    public function __toString()
+    {
+        return "$this->name from $this->country";
+    }
 }
