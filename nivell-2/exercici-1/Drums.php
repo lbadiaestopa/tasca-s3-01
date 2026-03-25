@@ -1,6 +1,6 @@
 <?php
 
-class DrumsPlayer implements Instrument
+class Drums implements Instrument
 {
     public function play(): void
     {

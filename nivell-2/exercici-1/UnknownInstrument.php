@@ -1,6 +1,6 @@
 <?php
 
-class UnknownInstrumentPlayer implements Instrument
+class UnknownInstrument implements Instrument
 {
     public function play(): void
     {

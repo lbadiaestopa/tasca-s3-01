@@ -4,7 +4,7 @@ class InstrumentPlayer
 {
     private Instrument $instrument;
 
-    public function __construct(Instrument $instrument = new UnknownInstrumentPlayer())
+    public function __construct(Instrument $instrument = new UnknownInstrument())
     {
         $this->instrument = $instrument;
     }
