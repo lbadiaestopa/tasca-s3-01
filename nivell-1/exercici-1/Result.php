@@ -3,11 +3,11 @@
 class Result
 {
 
-    private string $athlete;
-    private string $event;
+    private Athlete $athlete;
+    private Event $event;
     private string $medal;
 
-    public function __construct(string $athlete, string $event, string $medal)
+    public function __construct(Athlete $athlete, Event $event, string $medal)
     {
         $this->athlete = $athlete;
         $this->event = $event;
