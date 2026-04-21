@@ -1,6 +1,7 @@
 <?php
 
 require_once 'CanAttack.php';
+require_once 'Character.php';
 
 class Hero extends Character implements CanAttack
 {
