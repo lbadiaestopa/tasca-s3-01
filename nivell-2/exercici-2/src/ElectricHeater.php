@@ -1,9 +1,9 @@
 <?php
 
-require_once 'IMachineActions.php';
+require_once 'MachineActions.php';
 require_once 'ElectricHeaterActions.php';
 
-class ElectricHeater implements IMachineActions, ElectricHeaterActions
+class ElectricHeater implements MachineActions, ElectricHeaterActions
 {
     public function turnOn(): void
     {

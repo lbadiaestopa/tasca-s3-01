@@ -1,9 +1,9 @@
 <?php
 
-require_once 'IMachineActions.php';
+require_once 'MachineActions.php';
 require_once 'WashingMachineActions.php';
 
-class WashingMachine implements IMachineActions, WashingMachineActions
+class WashingMachine implements MachineActions, WashingMachineActions
 {
     public function turnOn(): void
     {
