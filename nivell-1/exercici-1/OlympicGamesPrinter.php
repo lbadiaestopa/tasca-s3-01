@@ -13,23 +13,16 @@ class OlympicGamesPrinter
 
     public function printOlympicsData(): void
     {
-        echo $this->olympicGames;
-        foreach ($this->olympicGames->getEventsData() as $event) {
-            foreach ($this->olympicGames->getResultsData() as $result) {
-                if ($event->getName() === $result->getEvent()) {
-                    echo $event . PHP_EOL . $this->matchResultsWithAthletes($result->getAthlete()) . PHP_EOL;
-                }
-            }
-        }
-    }
+        echo $this->olympicGames . PHP_EOL;
 
-    public function matchResultsWithAthletes(string $athlete): ?string
-    {
         foreach ($this->olympicGames->getResultsData() as $result) {
-            foreach ($this->olympicGames->getAthletesData() as $a)
-                if ($athlete === $a->getName()) {
-                    return $a . ' won ' . $result->getMedal();
-                }
+
+            $athlete = $result->getAthlete();
+            $event = $result->getEvent();
+
+            echo $event . PHP_EOL;
+            echo $athlete . ' won ' . $result->getMedal() . PHP_EOL;
+            echo PHP_EOL;
         }
     }
 }
